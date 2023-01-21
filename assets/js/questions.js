@@ -1,30 +1,22 @@
 var questions = [
     {
-        question: "",
-        choice1: "",
-        choice2: "",
-        choice3: "",
-        choice4: ""
+        title: "Commonly used data types DO NOT include:",
+        choices: ["strings", "booleans", "alerts", "numbers"],
+        answer: "alerts"
     },
     {
-        question: "",
-        choice1: "",
-        choice2: "",
-        choice3: "",
-        choice4: ""
+        title: "bbbbbbbbbbbbb",
+        choices: ["bb", "bbbbbbbbbbbb", "bbbbbbbbbbbb", "bbbbbbbbbb"],
+        answer: "bb"
     },
     {
-        question: "",
-        choice1: "",
-        choice2: "",
-        choice3: "",
-        choice4: ""
+        title: "ccccccccccc",
+        choices: ["cc", "ccccccccccc", "ccccccccccccccccccc", "numbers"],
+        answer: "cc"
     },
     {
-        question: "",
-        choice1: "",
-        choice2: "",
-        choice3: "",
-        choice4: ""
+        title: "ddddddddddddddddddd",
+        choices: ["dd", "dddddddddddddd", "ddddddddddddd", "dddddddddddddddd"],
+        answer: "dd"
     }
 ]
