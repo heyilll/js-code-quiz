@@ -18,10 +18,11 @@ var qs = questions;
 function countdown() {
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function () {
-        if (currQ == questions.length) {
+        if (currQ == qs.length) {
             // stop the timer
             clearInterval(timeInterval);
         }
+
         timerSpanID.textContent = timeLeft;
       
         if (timeLeft > 0) {
@@ -36,14 +37,6 @@ function countdown() {
   
   
 function renderQuestion() {
-    //reset previous question
-    resetQ();
-
-    if (currQ == questions.length) {
-        endQuiz();
-        return;
-    }
-
     //Grabbing the question from the questions array inside of questions.js file
     var q = qs[currQ];
     var qtitle = q.title;
@@ -77,33 +70,32 @@ choices.addEventListener("click", function(event) {
     if (element.matches("button") === true) { 
         if (element.innerText === qs[currQ].answer) {
             sfxRight.play();
-            fb.innerText = "Correct!"
-            fb.setAttribute("class", "start");
+            fb.innerText = "Correct!";
         } else {
             timeLeft -= 10; 
             sfxWrong.play();
-            fb.innerText = "Incorrect!"
-            fb.setAttribute("class", "start");
+            fb.innerText = "Incorrect!";
         }
 
-        setTimeout(resetQ(), 1000);
-        currQ++;
+        fb.setAttribute("class", "start");
+        setTimeout(iterateQ, 1500);
 
-        if (currQ == questions.length) {
-            endQuiz();
-        } else {
-            renderQuestion();
-        }
-
-        // Store updated todos in localStorage, re-render the list
+        // Store updated todos in localStorage
         // storeTodos();
     }
 });
 
-function resetQ() {
+function iterateQ() {
     questiont.innerText = "";
     choices.innerHTML = "";
     fb.setAttribute("class", "hide");
+    currQ++;
+
+    if (currQ == qs.length) {
+        endQuiz();
+    } else {
+        renderQuestion();
+    }
 }
 
 submit.addEventListener("click", function() {
