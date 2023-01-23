@@ -77,7 +77,7 @@ choices.addEventListener("click", function(event) {
         }
 
         fb.setAttribute("class", "start");
-        setTimeout(iterateQ, 1500);
+        setTimeout(iterateQ, 1000);
     }
 });
 
@@ -101,9 +101,12 @@ submit.addEventListener("click", function() {
         return;
     }
 
-    localStorage.setItem('score', text + ' = ' + score);
+    var entry = text + ' = ' + score;
+    localStorage.setItem(localStorage.length, entry);
+
     endScreen.setAttribute("class", "hide");
     startScreen.setAttribute("class", "start");
+    
     // reset
     currQ = 0;
     timeLeft = 75;
