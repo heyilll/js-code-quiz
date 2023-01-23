@@ -2,10 +2,6 @@ var highscores = document.querySelector("#highscores");
 var clearButton = document.querySelector("#clear");
 var records = [];
 
-
-localStorage.setItem('1', 'hh = hh');
-localStorage.setItem('2', 'hah = hah');
-
 renderScore();
 
  function renderScore() {
