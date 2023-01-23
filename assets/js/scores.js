@@ -1,6 +1,7 @@
 var highscores = document.querySelector("#highscores");
 var clearButton = document.querySelector("#clear");
 
+//renders scores
 renderScore();
 
 // renders the scores saved in local storage

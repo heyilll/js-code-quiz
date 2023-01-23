@@ -22,6 +22,7 @@ var timeLeft = 75;
 var score = 0;
 // grabs questions as an array from questions.js 
 var qs = questions;
+// declared as global variable so timer is able to be cleared by an outside function
 var timeInterval;
 
 // quiz timer function
