@@ -77,7 +77,7 @@ choices.addEventListener("click", function(event) {
         }
 
         fb.setAttribute("class", "start");
-        setTimeout(iterateQ, 1000);
+        setTimeout(iterateQ, 600);
     }
 });
 
@@ -106,7 +106,7 @@ submit.addEventListener("click", function() {
 
     endScreen.setAttribute("class", "hide");
     startScreen.setAttribute("class", "start");
-    
+
     // reset
     currQ = 0;
     timeLeft = 75;
