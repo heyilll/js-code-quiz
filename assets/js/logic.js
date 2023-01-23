@@ -6,6 +6,8 @@ var choices = document.querySelector("#choices");
 var quest = document.querySelector("#questions");
 var questiont = document.querySelector("#question-title");
 var fb = document.querySelector("#feedback");
+var scoreSpanID = document.querySelector("#final-score");
+var initialsInput = document.querySelector("#initials");
 var submit = document.querySelector("#submit");
 
 var sfxRight = new Audio("./assets/sfx/correct.wav");
@@ -13,6 +15,7 @@ var sfxWrong = new Audio("./assets/sfx/incorrect.wav");
 
 var currQ = 0;
 var timeLeft = 75;
+var score = 0;
 var qs = questions;
 
 function countdown() {
@@ -35,7 +38,6 @@ function countdown() {
     }, 1000);
 }
   
-  
 function renderQuestion() {
     //Grabbing the question from the questions array inside of questions.js file
     var q = qs[currQ];
@@ -47,10 +49,6 @@ function renderQuestion() {
         bt.innerText = q.choices[s];
         choices.appendChild(bt);
     }
-}
-
-function saveHighScore() {
-
 }
 
 function startQuiz() {
@@ -71,6 +69,7 @@ choices.addEventListener("click", function(event) {
         if (element.innerText === qs[currQ].answer) {
             sfxRight.play();
             fb.innerText = "Correct!";
+            score += 10;
         } else {
             timeLeft -= 10; 
             sfxWrong.play();
@@ -79,9 +78,6 @@ choices.addEventListener("click", function(event) {
 
         fb.setAttribute("class", "start");
         setTimeout(iterateQ, 1500);
-
-        // Store updated todos in localStorage
-        // storeTodos();
     }
 });
 
@@ -98,12 +94,20 @@ function iterateQ() {
     }
 }
 
-submit.addEventListener("click", function() {
+submit.addEventListener("click", function() {   
+    var text = initialsInput.value.trim();
 
+    if (text === "") {
+        return;
+    }
+
+    localStorage.setItem('score', text + ' = ' + score);
+    endScreen.setAttribute("class", "hide");
+    startScreen.setAttribute("class", "start");
 });
 
 function endQuiz() {
     quest.setAttribute("class", "hide");
+    scoreSpanID.innerText = score;
     endScreen.setAttribute("class", "start");
-    saveHighScore();
 }
