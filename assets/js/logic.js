@@ -104,6 +104,11 @@ submit.addEventListener("click", function() {
     localStorage.setItem('score', text + ' = ' + score);
     endScreen.setAttribute("class", "hide");
     startScreen.setAttribute("class", "start");
+    // reset
+    currQ = 0;
+    timeLeft = 75;
+    score = 0;
+    initialsInput.value = "";
 });
 
 function endQuiz() {
