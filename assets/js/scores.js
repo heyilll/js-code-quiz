@@ -1,6 +1,6 @@
 var highscores = document.querySelector("#highscores");
 var clearButton = document.querySelector("#clear");
-var storedScores = JSON.parse(localStorage.getItem("score"));
+var storedScores = localStorage.getItem("score");
 
 for (let i = 0; i < storedScores; i++) {
     var score = storedScores[i];
