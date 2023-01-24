@@ -79,13 +79,14 @@ choices.addEventListener("click", function(event) {
         if (element.innerText === qs[currQ].answer) {
             sfxRight.play();
             fb.innerText = "Correct!";
-            score += 10;
+            // score += 10;
         } else {
             timeLeft -= 10; 
             sfxWrong.play();
             fb.innerText = "Incorrect!";
         }
 
+        timerSpanID.textContent = timeLeft;
         // show feedback
         fb.setAttribute("class", "start");
         // waits so user can read feedback before moving to next question
@@ -95,6 +96,7 @@ choices.addEventListener("click", function(event) {
 
 // resets question display and feedback then iterates to next question
 function iterateQ() {
+    timerSpanID.textContent = timeLeft;
     questiont.innerText = "";
     choices.innerHTML = "";
     fb.setAttribute("class", "hide");
@@ -115,23 +117,23 @@ submit.addEventListener("click", function() {
 
     // if initials are given then save score to local storage
     if (text != "") {
-        var entry = text + ' = ' + score;
-        localStorage.setItem(localStorage.length, entry);
+        localStorage.setItem(text, score);
     }
-
-    // hides end screen and shows start screen
-    endScreen.setAttribute("class", "hide");
-    startScreen.setAttribute("class", "start");
 
     // resets timer, current question, score tracker and initials input form
     currQ = 0;
     timeLeft = 75;
     score = 0;
     initialsInput.value = "";
+
+    // redirects to high scores
+    window.location.replace("./highscores.html");
 });
 
 // hides questions and shows end screen
 function endQuiz() {
+    timerSpanID.textContent = timeLeft;
+    score = timeLeft;
     quest.setAttribute("class", "hide");
     scoreSpanID.innerText = score;
     endScreen.setAttribute("class", "start");

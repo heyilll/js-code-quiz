@@ -15,7 +15,7 @@ function renderScore() {
         var score = localStorage.getItem(key);
 
         var li = document.createElement("li");
-        li.textContent = score;
+        li.textContent = key + ' = ' + score;
         highscores.appendChild(li);
     }
 }
